@@ -1,0 +1,14 @@
+%{
+%}
+%%
+[a-zA-Z][a-zA-Z0-9]* {printf("\nIt is identifier\n");}
+.+ {printf("\nit is not identifier\n");}
+%%
+int yywrap(void){}
+int main()
+{
+   printf("\nEnter a identifier:");
+   yylex();
+   printf("\n");
+   return 0;
+}
