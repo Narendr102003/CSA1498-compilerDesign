@@ -1,0 +1,14 @@
+%{
+%}
+%%
+[0-9]+|[0-9]*\.[0-9]+ {printf("\nIt is digit\n");}
+.+ {printf("\nit is not digit\n");}
+%%
+int yywrap(void){}
+int main()
+{
+   printf("\nEnter a Number:");
+   yylex();
+   printf("\n");
+   return 0;
+} 
