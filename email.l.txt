@@ -1,0 +1,13 @@
+%{
+%}
+%%
+[a-z.0-9]+@[a-z]+".com"|".in" {printf("\nemail is valid\n");}
+.+ {printf("\nemail is not valid\n");}
+%%
+int yywrap(){}
+int main()
+{
+printf("\nenter your email\n");
+yylex();
+return 0;
+}
