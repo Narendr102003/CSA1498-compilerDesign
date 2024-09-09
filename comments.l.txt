@@ -1,0 +1,16 @@
+%{
+int n=0; 
+%} 
+%% 
+"//" n++;
+"/*"([^*]|[*][^/])*"*/" {n++;}
+.
+%% 
+int yywrap() 
+{} 
+int main() 
+{ 
+printf("enter:"); 
+yylex(); 
+printf("no of comment lines:%d",n); 
+} 
