@@ -1,0 +1,20 @@
+%{
+#include <stdio.h>
+#include <ctype.h>
+%}
+%%
+[A-Za-z]+ { printf("Word: %s\n", yytext); }
+"==" { printf("Relational Operator: %s\n", yytext); }
+"!=" { printf("Relational Operator: %s\n", yytext); }
+"<=" { printf("Relational Operator: %s\n", yytext); }
+">=" { printf("Relational Operator: %s\n", yytext); }
+"<" { printf("Relational Operator: %s\n", yytext); }
+">" { printf("Relational Operator: %s\n", yytext); }
+[ \t\n]+ { /* ignore whitespace */ }
+. { /* ignore other characters */ }
+%%
+int yywrap() {
+ return 1;
+}
+int main() {
+ yylex();
