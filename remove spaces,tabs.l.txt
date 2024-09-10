@@ -1,0 +1,22 @@
+%{
+#include <stdio.h>
+int spaces = 0;
+int tabs = 0;
+int newlines = 0;
+%}
+%%
+" " { spaces++; }
+"\t" { tabs++; }
+"\n" { newlines++; }
+. { /* ignore other characters */ }
+%%
+int yywrap() {
+ return 1;
+}
+int main() {
+ yylex();
+ printf("Spaces: %d\n", spaces);
+printf("Tabs: %d\n", tabs);
+ printf("Newlines: %d\n", newlines);
+ return 0;
+}
