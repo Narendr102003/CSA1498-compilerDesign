@@ -1,0 +1,20 @@
+%{
+#include<stdio.h>
+int consonant_count = 0;
+%}
+
+%%
+[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]     { consonant_count++; }
+.|\n                                 { }
+%%
+
+int main() {
+    printf("Enter a sentence: ");
+    yylex();
+    printf("Number of consonants: %d\n", consonant_count);
+    return 0;
+}
+
+int yywrap() {
+    return 1;
+}
