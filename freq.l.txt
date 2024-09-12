@@ -1,29 +1,25 @@
 %{
 #include <stdio.h>
 #include <string.h>
-
-int count = 0; // Initialize word counter
-char target[100]; // Target word to search
+char word[100];
+int count = 0;
 %}
-
 %%
-
-target     { count++; }
-.|\n         { /* Ignore other characters */ }
-
-%%
-
-int main() {
-    printf("Enter the word to count: ");
-    scanf("%s", target); // Read target word from user
-
-    printf("Enter the sentence: ");
-    yylex(); // Process the input
-
-    printf("Frequency of the word '%s': %d\n", target, count);
-    return 0;
+([a-zA-Z0-9]+) {
+ if (strcmp(yytext, word) == 0) {
+ count++;
+ }
 }
-
-int yywrap() {
-    return 1;
+.|\n { } // Ignore other characters
+%%
+int yywrap() { return 1; }
+int main()
+{
+ printf("Enter the word to count: ");
+ scanf("%s", word);
+ printf("Enter the sentence: ");
+ getchar(); // Clear the newline chara
+yylex();
+ printf("The word '%s' occurred %d times.\n", word, count);
+ return 0;
 }
